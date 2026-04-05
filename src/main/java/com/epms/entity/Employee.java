@@ -1,4 +1,5 @@
 package com.epms.entity;
+import com.epms.entity.Project;
 
 import jakarta.persistence.*;
 
@@ -29,4 +30,14 @@ public class Employee {
 
     public String getDesignation() { return designation; }
     public void setDesignation(String designation) { this.designation = designation; }
+    @ManyToOne
+    @JoinColumn(name = "project_id")
+    private Project project;
+    public Project getProject() {
+        return project;
+    }
+
+    public void setProject(Project project) {
+        this.project = project;
+    }
 }

@@ -1,5 +1,6 @@
 package com.epms.controller;
 
+import com.epms.entity.user;
 import com.epms.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -12,8 +13,7 @@ public class AuthController {
     private AuthService authService;
 
     @PostMapping("/login")
-    public String login(@RequestParam String username,
-                        @RequestParam String password) {
-        return authService.login(username, password);
+    public String login(@RequestBody user user) {
+        return authService.login(user.getUsername(), user.getPassword());
     }
 }

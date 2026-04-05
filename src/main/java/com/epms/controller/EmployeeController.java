@@ -14,13 +14,28 @@ public class EmployeeController {
     @Autowired
     private EmployeeService service;
 
+    // CREATE SINGLE EMPLOYEE
     @PostMapping
     public Employee addEmployee(@RequestBody Employee emp) {
         return service.save(emp);
     }
 
+    // GET ALL EMPLOYEES
     @GetMapping
     public List<Employee> getEmployees() {
         return service.getAll();
+    }
+
+    // ASSIGN PROJECT
+    @PutMapping("/{empId}/assign/{projectId}")
+    public Employee assignProject(@PathVariable Long empId,
+                                  @PathVariable Long projectId) {
+        return service.assignProject(empId, projectId);
+    }
+
+    // 🔥 BULK CREATE
+    @PostMapping("/bulk")
+    public List<Employee> createEmployees(@RequestBody List<Employee> employees) {
+        return service.saveAll(employees);
     }
 }

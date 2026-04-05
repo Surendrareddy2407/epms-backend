@@ -25,4 +25,6 @@ public class Project {
 
     public String getStatus() { return status; }
     public void setStatus(String status) { this.status = status; }
+    @OneToMany(mappedBy = "project")
+    private java.util.List<Employee> employees;
 }
