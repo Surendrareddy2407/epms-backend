@@ -25,6 +25,20 @@ public class EmployeeController {
     public List<Employee> getEmployees() {
         return service.getAll();
     }
+    @GetMapping("/{id}")
+    public Employee getEmployee(@PathVariable Long id) {
+    	return service.getById(id);
+    }
+    @PutMapping("/{id}")
+    public Employee updateEmployee(@PathVariable Long id, @RequestBody Employee emp) {
+    	return service.updateEmployee(id, emp);
+    }
+    @DeleteMapping("/{id}")
+    public String deleteEmployee(@PathVariable Long id) {
+    	service.deleteEmployee(id);
+    	return "Employee deleted successfully";
+    	
+    }
 
     // ASSIGN PROJECT
     @PutMapping("/{empId}/assign/{projectId}")
